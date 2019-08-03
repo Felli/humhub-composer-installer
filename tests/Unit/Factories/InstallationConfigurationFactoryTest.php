@@ -54,7 +54,7 @@ class InstallationConfigurationFactoryTest extends TestCase
     public function testFactoryCreateInstallationConfigurationFromComposerExtra()
     {
         $vendorDir = __DIR__ . '/../../../vendor';
-        $webDirectory = '../htdocs';
+        $webDirectory = 'DOCUMENT_ROOT';
 
         $configMock = $this->getMockBuilder(Config::class)->disableOriginalConstructor()->getMock();
         $configMock->expects($this->any())->method('get')->willReturnMap([
@@ -66,7 +66,7 @@ class InstallationConfigurationFactoryTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
         $packageMock->expects($this->any())->method('getExtra')->willReturn([
-            InstallationStatic::COMPOSER_EXTRA_ENTRY => [
+                InstallationStatic::COMPOSER_EXTRA_ENTRY => [
                 InstallationStatic::COMPOSER_EXTRA_WEB_DIRECTORY => $webDirectory,
                 InstallationStatic::COMPOSER_EXTRA_CONFIGURATION_DIRECTORY => InstallationStatic::DEFAULT_CONFIGURATION_DIRECTORY_RELATIVE_PATH_FROM_INSTALLATION_PACKAGE,
                 InstallationStatic::COMPOSER_EXTRA_PROJECT_MODULE_DIRECTORY => '../etc',
@@ -79,7 +79,7 @@ class InstallationConfigurationFactoryTest extends TestCase
         $composerMock->expects($this->any())->method('getPackage')->willReturn($packageMock);
 
         $installerRootPath = __DIR__ . '/../../..';
-        $config = InstallationConfigurationFactory::create($composerMock, $installerRootPath);
+            $config = InstallationConfigurationFactory::create($composerMock, $installerRootPath);
 
         $this->assertEquals(realpath($vendorDir), $config->getVendorDirectory());
 
