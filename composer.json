@@ -20,12 +20,12 @@
     },
     "require": {
         "php": ">=7.1",
-        "composer/composer": "^1.8",
-        "symfony/filesystem": "^4.3",
+        "composer/composer": "^1.9",
+        "symfony/filesystem": "^4.3.3",
         "webmozart/glob": "^4.1"
     },
     "require-dev": {
-        "tm/tooly-composer-script": "~1.4"
+        "tm/tooly-composer-script": "~1.4.1"
     },
     "scripts": {
         "post-update-cmd": [
